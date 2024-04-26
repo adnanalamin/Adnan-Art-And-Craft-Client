@@ -34,7 +34,7 @@ const Navbar = () => {
     <Link to="/login">
     <button className="btn ml-4 bg-[#237d85] border-none text-[#e8ffff] font-inter text-base hover:bg-[#003135]">Login <CiLogin></CiLogin></button>
     </Link>
-    <button className="btn ml-4 bg-[#237d85] border-none text-[#e8ffff] font-inter text-base hover:bg-[#003135]">Register  <CiLogin></CiLogin></button>
+    <Link to='/register'><button className="btn ml-4 bg-[#237d85] border-none text-[#e8ffff] font-inter text-base hover:bg-[#003135]">Register  <CiLogin></CiLogin></button></Link>
   </div>
 </div>
         </div>

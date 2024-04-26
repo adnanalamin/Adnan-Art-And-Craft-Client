@@ -1,5 +1,7 @@
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import loginPic from "../../assets/login.webp";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -8,11 +10,7 @@ const Login = () => {
         <div className="h-full">
           <div className="flex h-full flex-wrap items-center justify-center lg:justify-between">
             <div className="shrink-1 mb-12 grow-0 basis-auto md:mb-0 md:w-9/12 md:shrink-0 lg:w-6/12 xl:w-6/12">
-              <img
-                src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                className="w-full"
-                alt="Sample image"
-              />
+              <img src={loginPic} className="w-full" alt="Sample image" />
             </div>
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
               <form>
@@ -104,12 +102,11 @@ const Login = () => {
                   </button>
                   <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
                     Do not have an account?
-                    <a
-                      href="#!"
-                      className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                    >
-                      Register
-                    </a>
+                    <span className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700">
+                      <Link className="text-blue-600 ml-4" to="/register">
+                        Register
+                      </Link>
+                    </span>
                   </p>
                 </div>
               </form>
