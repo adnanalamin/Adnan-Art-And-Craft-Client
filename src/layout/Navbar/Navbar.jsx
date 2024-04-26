@@ -8,7 +8,7 @@ const Navbar = () => {
     const navItems = <>
         <li id="nav" className="font-poppins text-base"><NavLink to='/'>Home</NavLink></li>
         <li id="nav" className="font-poppins text-base"><NavLink to='/aa'>All Art & craft Items</NavLink></li>
-        <li id="nav" className="font-poppins text-base"><NavLink to='/aa'>Add Craft Item</NavLink></li>
+        <li id="nav" className="font-poppins text-base"><NavLink to='/additems'>Add Craft Item</NavLink></li>
         <li id="nav" className="font-poppins text-base"><NavLink to='/aa'>My Art & Craft List</NavLink></li>
     </>
     return (
