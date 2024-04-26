@@ -1,4 +1,52 @@
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+
 const AddItems = () => {
+    const [catagory, setCatagory] = useState()
+    const [stock, setStock] = useState()
+    const [customaization, setCustomaization] = useState()
+
+    const { user} = useContext(AuthContext);
+    const handelOneChange = e => {
+        setCatagory(e.target.value)
+        setStock(e.target.value)
+        setCustomaization(e.target.value)
+    }
+    const handelAddCraft = e => {
+        e.preventDefault()
+        const form = e.target;
+        const productName = form.productName.value;
+        const rating = form.rating.value;
+        const price = form.price.value;
+        const descriptions = form.descriptions.value;
+        const photo = form.photo.value;
+        const  processingTime =  new Date()
+        const userName = user.displayName
+        const userEmail = user.email
+        const items = {productName,catagory,rating, price, customaization, stock, descriptions, photo, processingTime, userName, userEmail}
+        console.log(items)
+
+        fetch('http://localhost:5000/artandcraft',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(items)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: "success",
+                    text: "COffee add successfully",
+                    icon: "success"
+                  });
+            }
+        })
+        form.reset()
+    }
   return (
     <div>
       <div className="bg-white  border-4 rounded-lg shadow relative m-10">
@@ -7,7 +55,7 @@ const AddItems = () => {
         </div>
 
         <div className="p-6 space-y-6">
-          <form>
+          <form onSubmit={handelAddCraft}>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label className="text-sm font-medium font-inter text-gray-900 block mb-2">
@@ -15,7 +63,7 @@ const AddItems = () => {
                 </label>
                 <input
                   type="text"
-                  name="product-name"
+                  name="productName"
                   id="product-name"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                   placeholder="Items Name"
@@ -26,16 +74,16 @@ const AddItems = () => {
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Category
                 </label>
-                <select className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                <select value={catagory} onChange={handelOneChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="" disabled selected>
                     Textile Arts
                   </option>
-                  <option>Embroidery</option>
-                  <option>Knitting & Crocheting</option>
-                  <option>Quilting</option>
-                  <option>Beadwork</option>
-                  <option>Tie-Dyeing</option>
-                  <option>Macrame</option>
+                  <option value="Embroidery">Embroidery</option>
+                  <option value="Knitting & Crocheting">Knitting & Crocheting</option>
+                  <option value="Quilting">Quilting</option>
+                  <option value="Beadwork">Beadwork</option>
+                  <option value="Tie-Dyeing">Tie-Dyeing</option>
+                  <option value="Macrame">Macrame</option>
                 </select>
               </div>
               <div className="col-span-6 sm:col-span-3">
@@ -44,7 +92,7 @@ const AddItems = () => {
                 </label>
                 <input
                   type="text"
-                  name="brand"
+                  name="rating"
                   id="brand"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                   placeholder="4.6"
@@ -68,7 +116,7 @@ const AddItems = () => {
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Customization
                 </label>
-                <select className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                <select onChange={handelOneChange} value={customaization} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="" disabled selected>
                     Customization
                   </option>
@@ -80,13 +128,26 @@ const AddItems = () => {
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Stock Status
                 </label>
-                <select className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                <select value={stock} onChange={handelOneChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="" disabled selected>
                     Stock Status
                   </option>
-                  <option>In stock</option>
-                  <option>Made to Order</option>
+                  <option value="In stock">In stock</option>
+                  <option value="Made to Order">Made to Order</option>
                 </select>
+              </div>
+              <div className="col-span-full">
+                <label className="text-sm font-medium font-inter text-gray-900 block mb-2">
+                  Img URL
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  id="product-name"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                  placeholder="Items Name"
+                  required=""
+                />
               </div>
               <div className="col-span-full">
                 <label className="text-sm font-medium text-gray-900 block mb-2">
@@ -95,6 +156,7 @@ const AddItems = () => {
                 <textarea
                   id="product-details"
                   rows="6"
+                  name="descriptions"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
                   placeholder="description"
                 ></textarea>
