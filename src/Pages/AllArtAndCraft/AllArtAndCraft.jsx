@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllArtAndCraft = () => {
   const items = useLoaderData();
@@ -70,9 +70,12 @@ const AllArtAndCraft = () => {
                 {item.userEmail}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+                
+                <Link to={`/productDetails/${item._id}`}>
                 <button className="text-indigo-600 hover:text-indigo-900">
                   Details
                 </button>
+                </Link>
               </td>
             </tr>
           ))}
