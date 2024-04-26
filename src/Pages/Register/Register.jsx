@@ -16,7 +16,7 @@ const Register = () => {
 
 
 const onSubmit = (data) => {
-    const { email, password, name, photo } = data;
+    const { email, password } = data;
     createUser(email, password)
       .then(() => {
         Swal.fire({
