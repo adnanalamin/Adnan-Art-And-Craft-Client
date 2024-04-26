@@ -8,9 +8,13 @@ const AddItems = () => {
     const [customaization, setCustomaization] = useState()
 
     const { user} = useContext(AuthContext);
-    const handelOneChange = e => {
+    const handelCatagoryChange = e => {
         setCatagory(e.target.value)
+    }
+    const handelStockChange = e => {
         setStock(e.target.value)
+    }
+    const handelCustomaizationChange = e => {
         setCustomaization(e.target.value)
     }
     const handelAddCraft = e => {
@@ -40,12 +44,12 @@ const AddItems = () => {
             if(data.insertedId){
                 Swal.fire({
                     title: "success",
-                    text: "COffee add successfully",
+                    text: "Item add successfully",
                     icon: "success"
                   });
             }
         })
-        form.reset()
+       
     }
   return (
     <div>
@@ -74,7 +78,7 @@ const AddItems = () => {
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Category
                 </label>
-                <select value={catagory} onChange={handelOneChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                <select value={catagory} onChange={handelCatagoryChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="" disabled selected>
                     Textile Arts
                   </option>
@@ -116,7 +120,7 @@ const AddItems = () => {
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Customization
                 </label>
-                <select onChange={handelOneChange} value={customaization} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                <select onChange={handelStockChange} value={stock} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="" disabled selected>
                     Customization
                   </option>
@@ -128,7 +132,7 @@ const AddItems = () => {
                 <label className="text-sm font-medium text-gray-900 block mb-2">
                   Stock Status
                 </label>
-                <select value={stock} onChange={handelOneChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
+                <select value={customaization} onChange={handelCustomaizationChange} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="" disabled selected>
                     Stock Status
                   </option>

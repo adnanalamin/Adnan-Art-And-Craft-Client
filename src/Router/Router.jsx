@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddItems from "../Pages/AddItems/AddItems";
+import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         {
           path: '/additems',
           element: <AddItems></AddItems>
+        },
+        {
+          path: '/allartandcraft',
+          element: <AllArtAndCraft></AllArtAndCraft>,
+          loader: () => fetch('http://localhost:5000/artandcraft')
         }
     ]
   },
