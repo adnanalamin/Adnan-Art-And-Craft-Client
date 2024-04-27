@@ -1,8 +1,19 @@
-import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {  useParams } from "react-router-dom";
 
 const ProductDetails = () => {
-  const product = useLoaderData();
-  const { productName, price, rating, photo, userName } = product;
+ const [item, setItem] = useState([])
+  const {id} = useParams()
+  
+  useEffect(() => {
+    fetch(`http://localhost:5000/allartandcraft/${id}`)
+    .then(res => res.json())
+    .then(data => {
+      setItem(data)
+      console.log(data)
+    })
+  },[id])
+  
   return (
     <div>
       <div className="font-inter">
@@ -10,23 +21,23 @@ const ProductDetails = () => {
           <div className="grid items-start grid-cols-1 lg:grid-cols-5 gap-12">
             <div className="lg:col-span-3 bg-gray-100 w-full lg:sticky top-0 text-center p-8">
               <img
-                src={photo}
+                src={item.photo}
                 alt="Product"
                 className="w-4/5 rounded object-cover"
               />
             </div>
             <div className="lg:col-span-2">
               <h2 className="text-2xl font-extrabold text-gray-800">
-                {productName}
+                {item.productName}
               </h2>
               <div className="flex flex-wrap gap-4 mt-4">
                 <p className="text-gray-800 text-xl font-bold">
-                  Price : {price}
+                  Price : {item.price}
                 </p>
               </div>
               <div className="flex space-x-2 mt-4">
                 <p className="text-gray-800 text-base font-bold">
-                  Rating : {rating}
+                  Rating : {item.rating}
                 </p>
               </div>
               <div className="mt-8">
@@ -55,7 +66,7 @@ const ProductDetails = () => {
               <div className="mt-8 max-w-md">
                 <div className="flex items-start mt-8">
                   <div className="ml-3">
-                    <h4 className="text-sm font-bold">{userName}</h4>
+                    <h4 className="text-sm font-bold">{item.userName}</h4>
 
                     <p className="text-xs mt-4">
                       The service was amazing. I never had to wait that long for

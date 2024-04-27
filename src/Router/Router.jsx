@@ -7,12 +7,9 @@ import Register from "../Pages/Register/Register";
 import AddItems from "../Pages/AddItems/AddItems";
 import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
-
 import MyArtAndCraft from "../Pages/MyArtAndCraft/MyArtAndCraft";
 
-
 const router = createBrowserRouter([
-  
   {
     path: "/",
     element: <Root></Root>,
@@ -42,19 +39,13 @@ const router = createBrowserRouter([
       {
         path: "/productDetails/:id",
         element: <ProductDetails></ProductDetails>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/artandcraft/${params.id}`),
       },
       {
-        path: "/myartandcraft/:email",
+        path: "/myartandcraft",
         element: <MyArtAndCraft></MyArtAndCraft>,
-
-        loader: ({params}) =>
-          fetch(`http://localhost:5000/artandcraft/${params.email}`),
       },
     ],
   },
 ]);
 
 export default router;
-

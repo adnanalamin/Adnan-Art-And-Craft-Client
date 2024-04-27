@@ -1,21 +1,32 @@
-import { useLoaderData } from "react-router-dom";
+
 import Card from "../../components/Card/Card";
 import { FaAnglesDown } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const MyArtAndCraft = () => {
-  const items = useLoaderData();
-  const [myItems, setMyItems] = useState(items)
-  console.log(items);
+  const { user } = useContext(AuthContext);
+  const [myItems, setMyItems] = useState([])
+
+  useEffect(() => {
+    
+    fetch(`http://localhost:5000/artandcraft/${user.email}`)
+    .then(res => res.json())
+    .then(data => {
+      setMyItems(data)
+    })
+  },[user])
+
+  
 
   const handelCustomizationFilter = (filter) => {
     if (filter === "all") {
-        setMyItems(items);
+        setMyItems(myItems);
     } else if (filter === "Yes") {
-      const yescustomaization = items.filter((item) => item.customaization == filter);
+      const yescustomaization = myItems.filter((item) => item.customaization == filter);
       setMyItems(yescustomaization);
     } else if (filter === "No") {
-      const nocustomaization = items.filter((item) => item.customaization == filter);
+      const nocustomaization = myItems.filter((item) => item.customaization == filter);
       setMyItems(nocustomaization);
     }
   };

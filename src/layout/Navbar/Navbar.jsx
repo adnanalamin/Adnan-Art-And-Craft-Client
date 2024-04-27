@@ -1,14 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import "./navbar.css";
 import { CiLogin } from "react-icons/ci";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, userLogout } = useContext(AuthContext);
-
-  
+  const [isHovered, setIsHovered] = useState(false);
 
   const handelSignout = () => {
     userLogout().then(() => {
@@ -37,7 +36,8 @@ const Navbar = () => {
         <NavLink to="/additems">Add Craft Item</NavLink>
       </li>
       <li id="nav" className="font-poppins text-base">
-        <NavLink to={user ? `/myartandcraft/${user.email}` : "/myartandcraft"}>My Art & Craft List</NavLink>
+        <NavLink to={"/myartandcraft"}>My Art & Craft List</NavLink>
+        {/* <NavLink to={user ? `/myartandcraft/${user.email}` : "/myartandcraft"}>My Art & Craft List</NavLink> */}
       </li>
     </>
   );
@@ -78,30 +78,36 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <div className="dlex justify-center dropdown fl dropdown-end">
+              <div className="dlex justify-center dropdown  dropdown-end">
                 <div className="flex items-center gap-4">
                   <div
-                    className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom"
-                    data-tip={user?.displayName || "Adnan ART & CRAFT"}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
                   >
-                    <div className="w-10 rounded-full ">
-                      <img
-                        alt="Tailwind CSS Navbar component"
-                        src={
-                          user?.photoURL ||
-                          "https://i.ibb.co/JQJbgtc/Profile-Transparent.png"
-                        }
-                      />
+                    <div className="btn btn-ghost btn-circle avatar">
+                      <div className="w-10 rounded-full ">
+                        <img
+                          alt="Tailwind CSS Navbar component"
+                          src={
+                            user?.photoURL ||
+                            "https://i.ibb.co/JQJbgtc/Profile-Transparent.png"
+                          }
+                        />
+                      </div>
                     </div>
+                    {isHovered && (
+                      <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                        <h3 className="block w-full px-4 py-2 font-poppins text-sm text-gray-700 hover:bg-gray-100">{user?.displayName}</h3>
+                        <button
+                        onClick={handelSignout}
+                        className="block w-full px-4 py-2 font-poppins font-bold text-sm text-gray-700 hover:bg-red-600 hover:text-white"
+                      >
+                        LogOut
+                      </button>
+                      </div>
+                    )}
                   </div>
-                  <div>
-                    <button
-                      onClick={handelSignout}
-                      className="btn ml-4 bg-[#237d85] border-none text-[#e8ffff] font-inter text-base hover:bg-[#003135]"
-                    >
-                      LogOut
-                    </button>
-                  </div>
+                  <div></div>
                 </div>
               </div>
             </>

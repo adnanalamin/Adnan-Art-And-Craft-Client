@@ -1,8 +1,9 @@
+
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllArtAndCraft = () => {
   const items = useLoaderData();
-  console.log(items.rating);
+  
   return (
     <div className="lg:px-8 py-14 overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200 ">
@@ -64,7 +65,7 @@ const AllArtAndCraft = () => {
               </td>
 
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.catagory}
+                {item.subcategory_Name}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                 {item.userEmail}
