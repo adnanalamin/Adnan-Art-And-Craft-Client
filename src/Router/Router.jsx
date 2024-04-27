@@ -8,40 +8,53 @@ import AddItems from "../Pages/AddItems/AddItems";
 import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 
+import MyArtAndCraft from "../Pages/MyArtAndCraft/MyArtAndCraft";
+
+
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<Error></Error>,
-    children:[
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-          path: "/login",
-          element: <Login></Login>
-        },
-        {
-          path: '/register',
-          element: <Register></Register>
-        },
-        {
-          path: '/additems',
-          element: <AddItems></AddItems>
-        },
-        {
-          path: '/allartandcraft',
-          element: <AllArtAndCraft></AllArtAndCraft>,
-          loader: () => fetch('http://localhost:5000/artandcraft')
-        },
-        {
-          path: '/productDetails/:id',
-          element: <ProductDetails></ProductDetails>,
-          loader: ({params}) => fetch(`http://localhost:5000/artandcraft/${params.id}`)
-        }
-    ]
+    errorElement: <Error></Error>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
+      {
+        path: "/additems",
+        element: <AddItems></AddItems>,
+      },
+      {
+        path: "/allartandcraft",
+        element: <AllArtAndCraft></AllArtAndCraft>,
+        loader: () => fetch("http://localhost:5000/artandcraft"),
+      },
+      {
+        path: "/productDetails/:id",
+        element: <ProductDetails></ProductDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/artandcraft/${params.id}`),
+      },
+      {
+        path: "/myartandcraft/:email",
+        element: <MyArtAndCraft></MyArtAndCraft>,
+
+        loader: ({params}) =>
+          fetch(`http://localhost:5000/artandcraft/${params.email}`),
+      },
+    ],
   },
 ]);
 
 export default router;
+

@@ -8,6 +8,8 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { user, userLogout } = useContext(AuthContext);
 
+  
+
   const handelSignout = () => {
     userLogout().then(() => {
       Swal.fire({
@@ -35,7 +37,7 @@ const Navbar = () => {
         <NavLink to="/additems">Add Craft Item</NavLink>
       </li>
       <li id="nav" className="font-poppins text-base">
-        <NavLink to="/aa">My Art & Craft List</NavLink>
+        <NavLink to={user ? `/myartandcraft/${user.email}` : "/myartandcraft"}>My Art & Craft List</NavLink>
       </li>
     </>
   );
