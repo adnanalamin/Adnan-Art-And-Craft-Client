@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
- const [item, setItem] = useState([])
-  const {id} = useParams()
-  
+  const [item, setItem] = useState([]);
+  const { id } = useParams();
+
   useEffect(() => {
     fetch(`http://localhost:5000/allartandcraft/${id}`)
-    .then(res => res.json())
-    .then(data => {
-      setItem(data)
-      console.log(data)
-    })
-  },[id])
-  
+      .then((res) => res.json())
+      .then((data) => {
+        setItem(data);
+      });
+  }, [id]);
+
   return (
     <div>
       <div className="font-inter">
@@ -35,44 +34,29 @@ const ProductDetails = () => {
                   Price : {item.price}
                 </p>
               </div>
-              <div className="flex space-x-2 mt-4">
+              <div className=" space-y-2 mt-4">
                 <p className="text-gray-800 text-base font-bold">
                   Rating : {item.rating}
+                </p>
+                <h3 className="text-gray-800 text-base font-bold">
+                  Stock : {item.stock}
+                </h3>
+                <p className="text-gray-800 text-base font-bold">
+                  Customaization : {item.customaization}
                 </p>
               </div>
               <div className="mt-8">
                 <h3 className="text-lg font-bold text-gray-800">
-                  About the coffee
+                  Category Name : {item.subcategory_Name}
                 </h3>
-                <ul className="space-y-3 list-disc mt-4 pl-4 text-sm text-gray-800">
-                  <li>
-                    A cup of coffee is a beverage essential because of its
-                    timeless appeal
-                  </li>
-                  <li>
-                    Easy to prepare. It can be brewed using various methods,
-                    from drip machines to manual pour-overs.
-                  </li>
-                  <li>
-                    Available in various sizes, from a standard espresso shot to
-                    a large Americano, catering to different preferences.
-                  </li>
-                  <li>
-                    You can customize your coffee by adding cream, sugar, or
-                    flavorings to suit your taste preferences.
-                  </li>
-                </ul>
+                <p className="text-xs mt-4">{item.descriptions}</p>
               </div>
               <div className="mt-8 max-w-md">
                 <div className="flex items-start mt-8">
                   <div className="ml-3">
-                    <h4 className="text-sm font-bold">{item.userName}</h4>
-
-                    <p className="text-xs mt-4">
-                      The service was amazing. I never had to wait that long for
-                      my food. The staff was friendly and attentive, and the
-                      delivery was impressively prompt.
-                    </p>
+                    <h4 className="text-sm font-bold">
+                      Author : {item.userName}
+                    </h4>
                   </div>
                 </div>
               </div>

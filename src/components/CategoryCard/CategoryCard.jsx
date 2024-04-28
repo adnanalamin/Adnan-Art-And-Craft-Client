@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const CategoryCard = ({item}) => {
     const {image, subcategory_Name} = item
   return (
     <div>
+      <Link to={`/categorypage/${subcategory_Name}`}>
       <div className="block  rounded-lg border shadow-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
         <div className="relative overflow-hidden bg-cover bg-no-repeat">
           <img
@@ -17,6 +19,7 @@ const CategoryCard = ({item}) => {
           </p>
         </div>
       </div>
+      </Link>
     </div>
   );
 };

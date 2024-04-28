@@ -8,6 +8,7 @@ import AddItems from "../Pages/AddItems/AddItems";
 import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import MyArtAndCraft from "../Pages/MyArtAndCraft/MyArtAndCraft";
+import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,11 @@ const router = createBrowserRouter([
         path: "/myartandcraft",
         element: <MyArtAndCraft></MyArtAndCraft>,
       },
+      {
+        path: '/categorypage/:subcategory',
+        element: <CategoryPage></CategoryPage>,
+        // loader: ({params}) => `http://localhost:5000/subcategoryProduct/${params.subcategory}`
+      }
     ],
   },
 ]);

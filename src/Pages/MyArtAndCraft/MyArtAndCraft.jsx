@@ -1,4 +1,3 @@
-
 import Card from "../../components/Card/Card";
 import { FaAnglesDown } from "react-icons/fa6";
 import { useContext, useEffect, useState } from "react";
@@ -6,28 +5,48 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const MyArtAndCraft = () => {
   const { user } = useContext(AuthContext);
-  const [myItems, setMyItems] = useState([])
+  const [myItems, setMyItems] = useState([]);
 
   useEffect(() => {
-    
     fetch(`http://localhost:5000/artandcraft/${user.email}`)
-    .then(res => res.json())
-    .then(data => {
-      setMyItems(data)
-    })
-  },[user])
+      .then((res) => res.json())
+      .then((data) => {
+        setMyItems(data);
+      });
+  }, [user]);
 
-  
+  const handleCardDeleted = (_id) => {
+    console.log(_id);
+    const updatedItems = myItems.filter((item) => item._id !== _id);
+    setMyItems(updatedItems);
+  };
 
   const handelCustomizationFilter = (filter) => {
     if (filter === "all") {
-        setMyItems(myItems);
+      fetch(`http://localhost:5000/artandcraft/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setMyItems(data);
+        });
+      // setMyItems(myItems);
     } else if (filter === "Yes") {
-      const yescustomaization = myItems.filter((item) => item.customaization == filter);
-      setMyItems(yescustomaization);
+      fetch(`http://localhost:5000/artandcraft/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const yescustomaization = data.filter(
+            (item) => item.customaization == filter
+          );
+          setMyItems(yescustomaization);
+        });
     } else if (filter === "No") {
-      const nocustomaization = myItems.filter((item) => item.customaization == filter);
-      setMyItems(nocustomaization);
+      fetch(`http://localhost:5000/artandcraft/${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          const nocustomaization = data.filter(
+            (item) => item.customaization == filter
+          );
+          setMyItems(nocustomaization);
+        });
     }
   };
   return (
@@ -57,14 +76,23 @@ const MyArtAndCraft = () => {
               </div>
 
               <div className="invisible absolute z-50 flex w-full flex-col bg-gray-100 py-1 px-4 text-gray-800 shadow-xl group-hover:visible">
-                <a onClick={() => handelCustomizationFilter('all')} className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">
+                <a
+                  onClick={() => handelCustomizationFilter("all")}
+                  className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2"
+                >
                   All
                 </a>
-                <a onClick={() => handelCustomizationFilter('Yes')} className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">
+                <a
+                  onClick={() => handelCustomizationFilter("Yes")}
+                  className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2"
+                >
                   Yes
                 </a>
 
-                <a onClick={() => handelCustomizationFilter('No')} className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2">
+                <a
+                  onClick={() => handelCustomizationFilter("No")}
+                  className="my-2 block border-b border-gray-100 py-1 font-semibold text-gray-500 hover:text-black md:mx-2"
+                >
                   No
                 </a>
               </div>
@@ -74,7 +102,11 @@ const MyArtAndCraft = () => {
       </div>
       <div className="md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-5 md:gap-3 gap-2 space-y-4 md:space-y-0 md:mx-8">
         {myItems.map((item) => (
-          <Card key={item._id} item={item}></Card>
+          <Card
+            key={item._id}
+            item={item}
+            onCardDeleted={handleCardDeleted}
+          ></Card>
         ))}
       </div>
     </div>
