@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
-import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import CraftItemCard from "../../components/CraftItemCard/CraftItemCard";
 
-const Subcategory = () => {
-  const [category, setCategory] = useState([]);
+
+const CraftItems = () => {
+    const [category, setCategory] = useState([]);
   useEffect(() => {
-    fetch("https://adnan-art-and-craft-server.vercel.app/subcategoryProduct")
+    fetch("https://adnan-art-and-craft-server.vercel.app/artandcraft")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setCategory(data);
       });
   }, []);
-  return (
-    <div className="lg:mx-12  mx-auto mt-16">
+    return (
+        <div className="lg:mx-12  mx-auto mt-16">
       <h1 className="text-center font-poppins font-bold text-4xl">
-        Art & Craft Categories
+      Craft Items
       </h1>
       <div className="mt-6">
         <p className="md:w-3/5 mx-auto text-center font-inter text-base">
@@ -26,11 +27,11 @@ const Subcategory = () => {
 
       <div className="md:grid lg:grid-cols-3 md:grid-cols-2 gap-5 mt-12">
         {category.map((item) => (
-          <CategoryCard key={item._id} item={item}></CategoryCard>
+          <CraftItemCard key={item._id} item={item}></CraftItemCard>
         ))}
       </div>
     </div>
-  );
+    );
 };
 
-export default Subcategory;
+export default CraftItems;

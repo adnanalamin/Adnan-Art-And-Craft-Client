@@ -9,6 +9,7 @@ import AllArtAndCraft from "../Pages/AllArtAndCraft/AllArtAndCraft";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import MyArtAndCraft from "../Pages/MyArtAndCraft/MyArtAndCraft";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
+import Update from "../Pages/Update/Update";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "/allartandcraft",
         element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: () => fetch("http://localhost:5000/artandcraft"),
+        loader: () => fetch("https://adnan-art-and-craft-server.vercel.app/artandcraft"),
       },
       {
         path: "/productDetails/:id",
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
       {
         path: '/categorypage/:subcategory',
         element: <CategoryPage></CategoryPage>,
-        // loader: ({params}) => `http://localhost:5000/subcategoryProduct/${params.subcategory}`
+      },
+      {
+        path: '/updateitem/:id',
+        element: <Update></Update>,
+        loader: ({params}) => fetch(`https://adnan-art-and-craft-server.vercel.app/allartandcraft/${params.id}`)
       }
     ],
   },

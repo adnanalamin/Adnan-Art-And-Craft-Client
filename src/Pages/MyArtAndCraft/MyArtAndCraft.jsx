@@ -8,7 +8,7 @@ const MyArtAndCraft = () => {
   const [myItems, setMyItems] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/artandcraft/${user.email}`)
+    fetch(`https://adnan-art-and-craft-server.vercel.app/artandcraft/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyItems(data);
@@ -23,14 +23,14 @@ const MyArtAndCraft = () => {
 
   const handelCustomizationFilter = (filter) => {
     if (filter === "all") {
-      fetch(`http://localhost:5000/artandcraft/${user.email}`)
+      fetch(`https://adnan-art-and-craft-server.vercel.app/artandcraft/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setMyItems(data);
         });
       // setMyItems(myItems);
     } else if (filter === "Yes") {
-      fetch(`http://localhost:5000/artandcraft/${user.email}`)
+      fetch(`https://adnan-art-and-craft-server.vercel.app/artandcraft/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           const yescustomaization = data.filter(
@@ -39,7 +39,7 @@ const MyArtAndCraft = () => {
           setMyItems(yescustomaization);
         });
     } else if (filter === "No") {
-      fetch(`http://localhost:5000/artandcraft/${user.email}`)
+      fetch(`https://adnan-art-and-craft-server.vercel.app/artandcraft/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           const nocustomaization = data.filter(

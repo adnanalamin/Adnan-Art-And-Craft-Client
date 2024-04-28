@@ -10,7 +10,7 @@ const CategoryPage = () => {
     const [category, setCategory] = useState([])
   
   useEffect(() => {
-    fetch(`http://localhost:5000/subcategoryProduct/${subcategory}`)
+    fetch(`https://adnan-art-and-craft-server.vercel.app/subcategoryProduct/${subcategory}`)
     .then(res => res.json())
     .then(data => {
         setCategory(data)

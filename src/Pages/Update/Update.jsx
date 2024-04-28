@@ -1,72 +1,67 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-const AddItems = () => {
-  const [subcategory_Name, setSubcategory_Name] = useState();
-  const [customaization, setCustomaization] = useState();
-  const [stock, setStock] = useState();
 
-  const { user } = useContext(AuthContext);
-  const handelCatagoryChange = (e) => {
-    setSubcategory_Name(e.target.value);
-  };
-  const handelStockChange = (e) => {
-    setStock(e.target.value);
-  };
-  const handelCustomaizationChange = (e) => {
-    setCustomaization(e.target.value);
-  };
-  const handelAddCraft = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const productName = form.productName.value;
-    const rating = form.rating.value;
-    const price = form.price.value;
-    const descriptions = form.descriptions.value;
-    const photo = form.photo.value;
-    const processingTime = new Date();
-    const userName = user.displayName;
-    const userEmail = user.email;
-    const items = {
-      productName,
-      subcategory_Name,
-      rating,
-      price,
-      customaization,
-      stock,
-      descriptions,
-      photo,
-      processingTime,
-      userName,
-      userEmail,
+const Update = () => {
+    const [subcategory_Name, setSubcategory_Name] = useState();
+    const [customaization, setCustomaization] = useState();
+    const [stock, setStock] = useState();
+    const newItem = useLoaderData()
+    const {_id, productName, rating, price, descriptions, photo} = newItem
+    const handelCatagoryChange = (e) => {
+      setSubcategory_Name(e.target.value);
     };
-    console.log(items);
-
-    fetch("https://adnan-art-and-craft-server.vercel.app/artandcraft", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(items),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "success",
-            text: "Item add successfully",
-            icon: "success",
-          });
-        }
-      });
-  };
-  return (
-    <div>
+    const handelStockChange = (e) => {
+      setStock(e.target.value);
+    };
+    const handelCustomaizationChange = (e) => {
+      setCustomaization(e.target.value);
+    };
+    const handelAddCraft = (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const productName = form.productName.value;
+      const rating = form.rating.value;
+      const price = form.price.value;
+      const descriptions = form.descriptions.value;
+      const photo = form.photo.value;
+      const processingTime = new Date();
+      const Updateitems = {
+        productName,
+        subcategory_Name,
+        rating,
+        price,
+        customaization,
+        stock,
+        descriptions,
+        photo,
+        processingTime,
+      };
+      fetch(`https://adnan-art-and-craft-server.vercel.app/updateartandcraft/${_id}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(Updateitems),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.modifiedCount > 0) {
+            Swal.fire({
+              title: "success",
+              text: "Item Update successfully",
+              icon: "success",
+            });
+          }
+        });
+    };
+    return (
+        <div>
       <div className="bg-white  border-4 rounded-lg shadow relative m-10">
         <div className="flex items-start justify-between p-5 border-b rounded-t">
-          <h3 className="text-xl font-semibold">Add Craft Item</h3>
+          <h3 className="text-xl font-semibold">Update Craft Item</h3>
         </div>
 
         <div className="p-6 space-y-6">
@@ -79,6 +74,7 @@ const AddItems = () => {
                 <input
                   type="text"
                   name="productName"
+                  defaultValue={productName}
                   id="product-name"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                   placeholder="Items Name"
@@ -114,6 +110,7 @@ const AddItems = () => {
                 <input
                   type="text"
                   name="rating"
+                  defaultValue={rating}
                   id="brand"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                   placeholder="4.6"
@@ -127,6 +124,7 @@ const AddItems = () => {
                 <input
                   type="number"
                   name="price"
+                  defaultValue={price}
                   id="price"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                   placeholder="2300"
@@ -172,6 +170,7 @@ const AddItems = () => {
                 <input
                   type="text"
                   name="photo"
+                  defaultValue={photo}
                   id="product-name"
                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
                   placeholder="Items Name"
@@ -186,6 +185,7 @@ const AddItems = () => {
                   id="product-details"
                   rows="6"
                   name="descriptions"
+                  defaultValue={descriptions}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
                   placeholder="description"
                 ></textarea>
@@ -203,7 +203,7 @@ const AddItems = () => {
         </div>
       </div>
     </div>
-  );
+    );
 };
 
-export default AddItems;
+export default Update;
