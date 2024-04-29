@@ -4,10 +4,18 @@ import { CiLogin } from "react-icons/ci";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import { IoMoon, IoSunny } from "react-icons/io5";
 
 const Navbar = () => {
   const { user, userLogout } = useContext(AuthContext);
   const [isHovered, setIsHovered] = useState(false);
+
+  const [dark, setDark] = useState(false);
+
+    const darkModeHandler = () => {
+        setDark(!dark);
+        document.body.classList.toggle("dark");
+    }
 
   const handelSignout = () => {
     userLogout().then(() => {
@@ -76,6 +84,15 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
+        <button onClick={()=> darkModeHandler()} className="md:mr-2 w-10 h-10">
+      {
+          
+          dark && <IoSunny className="w-6 h-6"></IoSunny>
+      }
+      {
+          !dark && <IoMoon className="w-6 h-6"></IoMoon>
+      }
+ </button>
           {user ? (
             <>
               <div className="dlex justify-center dropdown  dropdown-end">
@@ -97,13 +114,15 @@ const Navbar = () => {
                     </div>
                     {isHovered && (
                       <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                        <h3 className="block w-full px-4 py-2 font-poppins text-sm text-gray-700 hover:bg-gray-100">{user?.displayName}</h3>
+                        <h3 className="block w-full px-4 py-2 font-poppins text-sm text-gray-700 hover:bg-gray-100">
+                          {user?.displayName}
+                        </h3>
                         <button
-                        onClick={handelSignout}
-                        className="block w-full px-4 py-2 font-poppins font-bold text-sm text-gray-700 hover:bg-red-600 hover:text-white"
-                      >
-                        LogOut
-                      </button>
+                          onClick={handelSignout}
+                          className="block w-full px-4 py-2 font-poppins font-bold text-sm text-gray-700 hover:bg-red-600 hover:text-white"
+                        >
+                          LogOut
+                        </button>
                       </div>
                     )}
                   </div>

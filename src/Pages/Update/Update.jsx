@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Update = () => {
+  const {loading} = useContext(AuthContext)
     const [subcategory_Name, setSubcategory_Name] = useState();
     const [customaization, setCustomaization] = useState();
     const [stock, setStock] = useState();
@@ -18,7 +20,7 @@ const Update = () => {
     const handelCustomaizationChange = (e) => {
       setCustomaization(e.target.value);
     };
-    const handelAddCraft = (e) => {
+    const handelUpdateCraft = (e) => {
       e.preventDefault();
       const form = e.target;
       const productName = form.productName.value;
@@ -47,7 +49,7 @@ const Update = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          loading(false);
           if (data.modifiedCount > 0) {
             Swal.fire({
               title: "success",
@@ -65,7 +67,7 @@ const Update = () => {
         </div>
 
         <div className="p-6 space-y-6">
-          <form onSubmit={handelAddCraft}>
+          <form onSubmit={handelUpdateCraft}>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label className="text-sm font-medium font-inter text-gray-900 block mb-2">
@@ -196,7 +198,7 @@ const Update = () => {
                 className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                 type="submit"
               >
-                Add Item
+                Update Item
               </button>
             </div>
           </form>

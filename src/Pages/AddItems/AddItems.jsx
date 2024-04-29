@@ -193,7 +193,7 @@ const AddItems = () => {
             </div>
             <div className="p-6 border-t border-gray-200 rounded-b">
               <button
-                className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#393636]"
                 type="submit"
               >
                 Add Item

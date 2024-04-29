@@ -9,7 +9,7 @@ const Root = () => {
         <div style={{
             backgroundImage: `url(${background})`,
           }}>
-            <div className="max-w-6xl mx-auto bg-white"
+            <div className="max-w-6xl mx-auto bg-white dark:bg-[#545050]"
         >
             <Navbar></Navbar>
             <Outlet></Outlet>

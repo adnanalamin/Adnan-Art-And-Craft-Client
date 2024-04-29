@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CraftItemCard from "../../components/CraftItemCard/CraftItemCard";
+import { Rotate, JackInTheBox } from "react-awesome-reveal";
 
 
 const CraftItems = () => {
@@ -15,13 +16,14 @@ const CraftItems = () => {
     return (
         <div className="lg:mx-12  mx-auto mt-16">
       <h1 className="text-center font-poppins font-bold text-4xl">
-      Craft Items
+      <Rotate>Craft Items</Rotate>
+      
       </h1>
       <div className="mt-6">
-        <p className="md:w-3/5 mx-auto text-center font-inter text-base">
-          This category involves creating images or designs on a surface using
+        <p className="md:w-3/5 mx-auto text-center font-inter text-base"><JackInTheBox>This category involves creating images or designs on a surface using
           various tools such as pencils, pens, charcoal, or pastels. Drawing can
-          range from simple sketches to intricate illustrations
+          range from simple sketches to intricate illustrations</JackInTheBox>
+          
         </p>
       </div>
 

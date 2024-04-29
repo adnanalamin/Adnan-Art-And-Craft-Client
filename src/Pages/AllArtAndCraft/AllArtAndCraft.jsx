@@ -1,8 +1,11 @@
 
+
 import { Link, useLoaderData } from "react-router-dom";
+
 
 const AllArtAndCraft = () => {
   const items = useLoaderData();
+  
   
   return (
     <div className="lg:px-8 py-14 overflow-x-auto">
