@@ -73,14 +73,16 @@ const Navbar = () => {
             <ul
               id="nav"
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 bg-black p-2 z-40 shadow  rounded-box w-52"
             >
               {navItems}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Adnan ART & CRAFT</a>
+          <a className="btn btn-ghost text-xl hidden md:flex">
+            Adnan ART & CRAFT
+          </a>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
@@ -131,7 +133,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="btn ml-4 bg-[#237d85] border-none text-[#e8ffff] font-inter text-base hover:bg-[#003135]">
+                <button className="btn ml-4  bg-[#237d85] border-none text-[#e8ffff] font-inter text-base hover:bg-[#003135]">
                   Login <CiLogin></CiLogin>
                 </button>
               </Link>

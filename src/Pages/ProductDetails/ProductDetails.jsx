@@ -42,7 +42,7 @@ const ProductDetails = () => {
                   Stock : {item.stock}
                 </h3>
                 <h3 className="text-gray-800 text-base font-bold">
-                Processing Time : {item.processingTime}
+                  Processing Time : {item.processingTime}
                 </h3>
                 <p className="text-gray-800 text-base font-bold">
                   Customaization : {item.customaization}

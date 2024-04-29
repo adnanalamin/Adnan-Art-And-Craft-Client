@@ -3,64 +3,66 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-
 const Update = () => {
-  const {loading} = useContext(AuthContext)
-    const [subcategory_Name, setSubcategory_Name] = useState();
-    const [customaization, setCustomaization] = useState();
-    const [stock, setStock] = useState();
-    const newItem = useLoaderData()
-    const {_id, productName, rating, price, descriptions, photo} = newItem
-    const handelCatagoryChange = (e) => {
-      setSubcategory_Name(e.target.value);
+  const { loading } = useContext(AuthContext);
+  const [subcategory_Name, setSubcategory_Name] = useState();
+  const [customaization, setCustomaization] = useState();
+  const [stock, setStock] = useState();
+  const newItem = useLoaderData();
+  const { _id, productName, rating, price, descriptions, photo } = newItem;
+  const handelCatagoryChange = (e) => {
+    setSubcategory_Name(e.target.value);
+  };
+  const handelStockChange = (e) => {
+    setStock(e.target.value);
+  };
+  const handelCustomaizationChange = (e) => {
+    setCustomaization(e.target.value);
+  };
+  const handelUpdateCraft = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const productName = form.productName.value;
+    const rating = form.rating.value;
+    const price = form.price.value;
+    const descriptions = form.descriptions.value;
+    const photo = form.photo.value;
+    const processingTime = new Date();
+    const Updateitems = {
+      productName,
+      subcategory_Name,
+      rating,
+      price,
+      customaization,
+      stock,
+      descriptions,
+      photo,
+      processingTime,
     };
-    const handelStockChange = (e) => {
-      setStock(e.target.value);
-    };
-    const handelCustomaizationChange = (e) => {
-      setCustomaization(e.target.value);
-    };
-    const handelUpdateCraft = (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const productName = form.productName.value;
-      const rating = form.rating.value;
-      const price = form.price.value;
-      const descriptions = form.descriptions.value;
-      const photo = form.photo.value;
-      const processingTime = new Date();
-      const Updateitems = {
-        productName,
-        subcategory_Name,
-        rating,
-        price,
-        customaization,
-        stock,
-        descriptions,
-        photo,
-        processingTime,
-      };
-      fetch(`https://adnan-art-and-craft-server.vercel.app/updateartandcraft/${_id}`, {
+    fetch(
+      `https://adnan-art-and-craft-server.vercel.app/updateartandcraft/${_id}`,
+      {
         method: "PUT",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify(Updateitems),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          loading(false);
-          if (data.modifiedCount > 0) {
-            Swal.fire({
-              title: "success",
-              text: "Item Update successfully",
-              icon: "success",
-            });
-          }
-        });
-    };
-    return (
-        <div>
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        loading(false);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "success",
+            text: "Item Update successfully",
+            icon: "success",
+          });
+        }
+      });
+  };
+  return (
+    <div>
       <div className="bg-white  border-4 rounded-lg shadow relative m-10">
         <div className="flex items-start justify-between p-5 border-b rounded-t">
           <h3 className="text-xl font-semibold">Update Craft Item</h3>
@@ -85,7 +87,7 @@ const Update = () => {
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label className="text-sm font-medium text-gray-900 block mb-2">
-                Subcategory Name
+                  Subcategory Name
                 </label>
                 <select
                   value={subcategory_Name}
@@ -205,7 +207,7 @@ const Update = () => {
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Update;

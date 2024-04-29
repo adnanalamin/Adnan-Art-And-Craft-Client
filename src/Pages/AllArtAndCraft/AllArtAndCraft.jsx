@@ -1,12 +1,8 @@
-
-
 import { Link, useLoaderData } from "react-router-dom";
-
 
 const AllArtAndCraft = () => {
   const items = useLoaderData();
-  
-  
+
   return (
     <div className="lg:px-8 py-14 overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200 ">
@@ -74,11 +70,10 @@ const AllArtAndCraft = () => {
                 {item.userEmail}
               </td>
               <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-                
                 <Link to={`/productDetails/${item._id}`}>
-                <button className="text-indigo-600 hover:text-indigo-900">
-                  Details
-                </button>
+                  <button className="text-indigo-600 hover:text-indigo-900">
+                    Details
+                  </button>
                 </Link>
               </td>
             </tr>

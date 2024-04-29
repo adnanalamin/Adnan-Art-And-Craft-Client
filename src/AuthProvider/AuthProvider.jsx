@@ -57,10 +57,10 @@ const AuthProvider = ({ children }) => {
 
   const updateUserProfile = (userName, photourl) => {
     return updateProfile(auth.currentUser, {
-     displayName:userName,
-     photoURL:photourl
-    })
-  }
+      displayName: userName,
+      photoURL: photourl,
+    });
+  };
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {

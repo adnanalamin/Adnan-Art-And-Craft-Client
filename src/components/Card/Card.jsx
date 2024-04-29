@@ -19,9 +19,12 @@ const Card = ({ item, onCardDeleted }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://adnan-art-and-craft-server.vercel.app/allartandcraft/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://adnan-art-and-craft-server.vercel.app/allartandcraft/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -71,9 +74,9 @@ const Card = ({ item, onCardDeleted }) => {
                 <p>{rating}</p>
               </div>
               <Link to={`/updateitem/${_id}`}>
-              <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
-                Update
-              </button>
+                <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
+                  Update
+                </button>
               </Link>
               <button
                 onClick={() => handelDelete(_id)}

@@ -32,30 +32,54 @@ const router = createBrowserRouter([
       },
       {
         path: "/additems",
-        element: <PrivetRouter><AddItems></AddItems></PrivetRouter>,
+        element: (
+          <PrivetRouter>
+            <AddItems></AddItems>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/allartandcraft",
         element: <AllArtAndCraft></AllArtAndCraft>,
-        loader: () => fetch("https://adnan-art-and-craft-server.vercel.app/artandcraft"),
+        loader: () =>
+          fetch("https://adnan-art-and-craft-server.vercel.app/artandcraft"),
       },
       {
         path: "/productDetails/:id",
-        element: <PrivetRouter><ProductDetails></ProductDetails></PrivetRouter>,
+        element: (
+          <PrivetRouter>
+            <ProductDetails></ProductDetails>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/myartandcraft",
-        element: <PrivetRouter><MyArtAndCraft></MyArtAndCraft></PrivetRouter>,
+        element: (
+          <PrivetRouter>
+            <MyArtAndCraft></MyArtAndCraft>
+          </PrivetRouter>
+        ),
       },
       {
-        path: '/categorypage/:subcategory',
-        element: <PrivetRouter><CategoryPage></CategoryPage></PrivetRouter>,
+        path: "/categorypage/:subcategory",
+        element: (
+          <PrivetRouter>
+            <CategoryPage></CategoryPage>
+          </PrivetRouter>
+        ),
       },
       {
-        path: '/updateitem/:id',
-        element: <PrivetRouter><Update></Update></PrivetRouter>,
-        loader: ({params}) => fetch(`https://adnan-art-and-craft-server.vercel.app/allartandcraft/${params.id}`)
-      }
+        path: "/updateitem/:id",
+        element: (
+          <PrivetRouter>
+            <Update></Update>
+          </PrivetRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://adnan-art-and-craft-server.vercel.app/allartandcraft/${params.id}`
+          ),
+      },
     ],
   },
 ]);

@@ -5,10 +5,20 @@ import { BsStopwatch } from "react-icons/bs";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const SubCategoryCard = ({item}) => {
-    const { photo, productName, price, stock, customaization, rating, subcategory_Name, descriptions, processingTime } = item;
-    return (
-        <div className=" w-full">
+const SubCategoryCard = ({ item }) => {
+  const {
+    photo,
+    productName,
+    price,
+    stock,
+    customaization,
+    rating,
+    subcategory_Name,
+    descriptions,
+    processingTime,
+  } = item;
+  return (
+    <div className=" w-full">
       <div className="min-h-screen bg-gradient-to-tr  justify-center items-center">
         <div className="md:px-4">
           <div className="max-w-sm bg-white px-6 shadow-xl pt-6 pb-2 rounded-xl  transform hover:scale-105 transition duration-500">
@@ -54,18 +64,18 @@ const SubCategoryCard = ({item}) => {
                 <p>{rating}</p>
               </div>
               <Link to={`/productDetails/${item._id}`}>
-              <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
-              View Details
-              </button>
+                <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">
+                  View Details
+                </button>
               </Link>
             </div>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 SubCategoryCard.propTypes = {
-    item: PropTypes.object.isRequired,
-  };
+  item: PropTypes.object.isRequired,
+};
 export default SubCategoryCard;

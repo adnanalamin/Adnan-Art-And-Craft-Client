@@ -16,7 +16,7 @@ import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
 const Slider = () => {
   return (
-    <div className="h-40 md:h-[400px] mt-12 rounded-lg">
+    <div className="h-40 md:h-[400px] mt-12 rounded-lg z-10">
       <Swiper
         spaceBetween={30}
         effect={"fade"}
@@ -37,13 +37,14 @@ const Slider = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                <h1 className="mb-5 text-5xl font-bold">
+                  The Artistry of Embroidery
+                </h1>
                 <p className="mb-5">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
+                  Embroidery is not limited to fabric; it can also be found on
+                  leather, paper, and even metal, showcasing its versatility and
+                  adaptability.
                 </p>
-                <button className="btn btn-primary">Get Started</button>
               </div>
             </div>
           </div>
@@ -58,13 +59,14 @@ const Slider = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                <h1 className="mb-5 text-5xl font-bold">
+                  The Timeless Crafts of Knitting
+                </h1>
                 <p className="mb-5">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
+                  Knitting and crocheting have been practiced for centuries,
+                  with evidence of knitted textiles dating back to ancient Egypt
+                  and crocheted lace emerging in Europe during the 19th century.
                 </p>
-                <button className="btn btn-primary">Get Started</button>
               </div>
             </div>
           </div>
@@ -79,13 +81,14 @@ const Slider = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                <h1 className="mb-5 text-5xl font-bold">
+                  The Timeless Artistry of Quilting
+                </h1>
                 <p className="mb-5">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
+                  Quilting has a rich history spanning cultures and continents,
+                  with evidence of quilted textiles dating back to ancient
+                  Egypt, China, and Central Asia.
                 </p>
-                <button className="btn btn-primary">Get Started</button>
               </div>
             </div>
           </div>
@@ -100,13 +103,14 @@ const Slider = () => {
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                <h1 className="mb-5 text-5xl font-bold">
+                  The Timeless Artistry of Beadwork
+                </h1>
                 <p className="mb-5">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
+                  Beadwork is the art or craft of attaching beads to one another
+                  by stringing them onto a thread or thin wire with a sewing or
+                  beading needle or sewing them to cloth
                 </p>
-                <button className="btn btn-primary">Get Started</button>
               </div>
             </div>
           </div>

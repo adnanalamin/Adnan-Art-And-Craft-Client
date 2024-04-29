@@ -87,7 +87,7 @@ const AddItems = () => {
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label className="text-sm font-medium text-gray-900 block mb-2">
-                Subcategory Name
+                  Subcategory Name
                 </label>
                 <select
                   value={subcategory_Name}
