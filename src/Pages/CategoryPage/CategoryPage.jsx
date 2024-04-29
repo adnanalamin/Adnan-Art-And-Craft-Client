@@ -18,9 +18,9 @@ const CategoryPage = () => {
     })
   },[subcategory])
     return (
-        <div>
+        <div className="mt-4">
             {category.length > 0 ? (
-                <div>
+                <div className="grid md:grid-cols-3">
                     {
                         category.map(item => <SubCategoryCard key={item._id} item={item}></SubCategoryCard>)
                     }

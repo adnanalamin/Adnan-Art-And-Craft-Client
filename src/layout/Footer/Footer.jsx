@@ -5,7 +5,7 @@ import { FaMapLocationDot } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="bg-[#0FA4AFE6] mt-8">
+    <div className="bg-[#0FA4AFE6] dark:bg-gray-800 dark:border-gray-700 mt-8">
       <footer className="footer p-10  text-base-content">
         <aside className="my-auto">
           <h1 className="text-4xl font-poppins text-white font-extrabold">

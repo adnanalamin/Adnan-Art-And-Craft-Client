@@ -7,11 +7,11 @@ const ContactUs = () => {
   return (
     <div>
       <div className="container my-24 mx-auto md:px-6">
-        <h1 className="text-center font-poppins font-bold text-4xl">
+        <h1 className="text-center font-poppins font-bold text-4xl dark:text-white">
           Contact Us
         </h1>
         <div className="mt-6">
-          <p className="md:w-3/5 mx-auto text-center font-inter text-base">
+          <p className="md:w-3/5 mx-auto text-center font-inter text-base dark:text-white">
             Your opinion matters to us! Whether it is a suggestion for
             improvement, a compliment, or a concern, we value your feedback. Our
             dedicated support team is here to address any issues you may

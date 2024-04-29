@@ -2,21 +2,25 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 // import "./styles.css";
-import './styles.css'
+import "./styles.css";
 import { Pagination } from "swiper/modules";
 import { FaStar } from "react-icons/fa";
 
 const HappyClient = () => {
   return (
     <div>
-        <h1 className="text-center font-poppins font-bold text-4xl">
-          Happy Client
-        </h1>
-        <div className="mt-6 mb-10">
-          <p className="md:w-3/5 mx-auto text-center font-inter text-base">
-          At Adnan ART & CRAFT, our clients are at the heart of everything we do. Their satisfaction is not just a goal; it is our passion. We take immense pride in delivering exceptional service and exceeding expectations. But don not just take our word for it—here is what some of our delighted clients have to say.
-          </p>
-        </div>
+      <h1 className="text-center font-poppins font-bold text-4xl dark:text-white">
+        Happy Client
+      </h1>
+      <div className="mt-6 mb-10">
+        <p className="md:w-3/5 mx-auto text-center font-inter text-base dark:text-white">
+          At Adnan ART & CRAFT, our clients are at the heart of everything we
+          do. Their satisfaction is not just a goal; it is our passion. We take
+          immense pride in delivering exceptional service and exceeding
+          expectations. But don not just take our word for it—here is what some
+          of our delighted clients have to say.
+        </p>
+      </div>
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -282,7 +286,6 @@ const HappyClient = () => {
             </div>
           </section>
         </SwiperSlide>
-        
       </Swiper>
     </div>
   );

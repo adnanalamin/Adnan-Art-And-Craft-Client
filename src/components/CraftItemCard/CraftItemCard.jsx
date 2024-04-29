@@ -10,7 +10,7 @@ const CraftItemCard = ({item}) => {
         <div className=" w-full">
       <div className="min-h-screen bg-gradient-to-tr  justify-center items-center">
         <div className="md:px-4">
-          <div className="max-w-sm bg-white px-6 shadow-xl pt-6 pb-2 rounded-xl  transform hover:scale-105 transition duration-500">
+          <div className="max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700 px-6 shadow-xl pt-6 pb-2 rounded-xl  transform hover:scale-105 transition duration-500">
             <div className="relative">
               <img
                 className="w-full rounded-xl h-44"
@@ -24,21 +24,21 @@ const CraftItemCard = ({item}) => {
                 {stock}
               </p>
             </div>
-            <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer">
+            <h1 className="mt-4 text-gray-800 text-2xl font-bold cursor-pointer dark:text-white">
               {productName}
             </h1>
             <div className="my-4">
               <div className="flex space-x-1 items-center">
                 <span>
-                  <GiPriceTag className="h-6 w-6 text-indigo-600 mb-1.5"></GiPriceTag>
+                  <GiPriceTag className="h-6 w-6 text-indigo-600 mb-1.5 dark:text-white"></GiPriceTag>
                 </span>
-                <p>{price}</p>
+                <p className="dark:text-white">{price}</p>
               </div>
               <div className="flex space-x-1 items-center">
                 <span>
-                  <IoIosStarHalf className="h-6 w-6 text-indigo-600 mb-1.5"></IoIosStarHalf>
+                  <IoIosStarHalf className="h-6 w-6 dark:text-white text-indigo-600 mb-1.5"></IoIosStarHalf>
                 </span>
-                <p>{rating}</p>
+                <p className="dark:text-white">{rating}</p>
               </div>
               <Link to={`/productDetails/${_id}`}>
               <button className="mt-4 text-xl w-full text-white bg-indigo-600 py-2 rounded-xl shadow-lg">

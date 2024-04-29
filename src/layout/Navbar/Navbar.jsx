@@ -12,10 +12,10 @@ const Navbar = () => {
 
   const [dark, setDark] = useState(false);
 
-    const darkModeHandler = () => {
-        setDark(!dark);
-        document.body.classList.toggle("dark");
-    }
+  const darkModeHandler = () => {
+    setDark(!dark);
+    document.body.classList.toggle("dark");
+  };
 
   const handelSignout = () => {
     userLogout().then(() => {
@@ -51,7 +51,7 @@ const Navbar = () => {
   );
   return (
     <div className="">
-      <div className="navbar bg-[#0FA4AFE6] text-white">
+      <div className="navbar bg-[#0FA4AFE6] dark:bg-gray-800 dark:border-gray-700 text-white">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,15 +84,13 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
-        <button onClick={()=> darkModeHandler()} className="md:mr-2 w-10 h-10">
-      {
-          
-          dark && <IoSunny className="w-6 h-6"></IoSunny>
-      }
-      {
-          !dark && <IoMoon className="w-6 h-6"></IoMoon>
-      }
- </button>
+          <button
+            onClick={() => darkModeHandler()}
+            className="md:mr-2 w-10 h-10"
+          >
+            {dark && <IoSunny className="w-6 h-6"></IoSunny>}
+            {!dark && <IoMoon className="w-6 h-6"></IoMoon>}
+          </button>
           {user ? (
             <>
               <div className="dlex justify-center dropdown  dropdown-end">

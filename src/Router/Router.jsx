@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/categorypage/:subcategory',
-        element: <CategoryPage></CategoryPage>,
+        element: <PrivetRouter><CategoryPage></CategoryPage></PrivetRouter>,
       },
       {
         path: '/updateitem/:id',

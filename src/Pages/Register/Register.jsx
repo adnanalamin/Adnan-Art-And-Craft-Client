@@ -10,20 +10,24 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
 
 
 
 
 const onSubmit = (data) => {
-    const { email, password } = data;
+    const { name, photoURL, email, password } = data;
     createUser(email, password)
       .then(() => {
-        Swal.fire({
+        updateUserProfile(name, photoURL)
+        .then(() => {
+          Swal.fire({
             title: "Good job!",
             text: "Registration successfully!",
             icon: "success"
           });
+        })
+        
       })
       .catch(() => {
         Swal.fire({

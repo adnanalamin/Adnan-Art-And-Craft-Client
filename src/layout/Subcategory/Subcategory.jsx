@@ -14,12 +14,12 @@ const Subcategory = () => {
   }, []);
   return (
     <div className="lg:mx-12  mx-auto mt-16">
-      <h1 className="text-center font-poppins font-bold text-4xl">
+      <h1 className="text-center font-poppins font-bold text-4xl dark:text-white">
         {" "}
         <Slide>Art & Craft Categories</Slide>
       </h1>
       <div className="mt-6">
-        <p className="md:w-3/5 mx-auto text-center font-inter text-base">
+        <p className="md:w-3/5 mx-auto text-center font-inter text-base dark:text-white">
           {" "}
           <Fade>
             This category involves creating images or designs on a surface using
