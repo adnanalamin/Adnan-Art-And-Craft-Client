@@ -43,3 +43,12 @@ Visit our website: ([https://www.adnanartcraft.com](https://adnan-art-and-craft.
 
 Adnan ART & CRAFT is your gateway to a world of artistic expression and craftsmanship. Whether you're a seasoned artisan or a novice crafter, we invite you to join our community and embark on a creative journey like no other!
 
+## Installation
+
+To run the Study Squadron project locally, follow these steps:
+
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Install dependencies using `npm install`.
+4. Start the development server using `npm run dev`.
+
